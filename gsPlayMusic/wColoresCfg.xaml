@@ -1,0 +1,91 @@
+﻿<Window x:Class="wColoresCfg"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    Title="Configurar colores de gsPlayMusic" 
+    Background="#FFE9E9E9" Foreground="Black"
+    Height="605" Width="450" 
+        WindowStyle="ThreeDBorderWindow" ResizeMode="NoResize" 
+        WindowStartupLocation="CenterOwner" 
+        >
+    <Window.Resources>
+        <ResourceDictionary Source="gsPlayResourceDictionary.xaml"/>
+    </Window.Resources>
+    <Grid Name="gridColores">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="25"/>
+            <RowDefinition Height="80"/>
+            <RowDefinition Height="80"/>
+            <RowDefinition Height="80"/>
+            <RowDefinition Height="80"/>
+            <RowDefinition Height="80"/>
+            <RowDefinition Height="80"/>
+            <RowDefinition Height="23"/>
+            <RowDefinition Height="35"/>
+            <RowDefinition Height="5"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition />
+            <ColumnDefinition Width="120" />
+            <ColumnDefinition Width="150" />
+            <ColumnDefinition Width="20" />
+        </Grid.ColumnDefinitions>
+        <!-- El menú de la pantalla de configuración de colores -->
+        <Menu Name="mnuPrincipal" IsMainMenu="True" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="4">
+            <MenuItem Header="_Fichero">
+                <MenuItem Name="mnuAbrir" Header="_Abrir combinación de colores..." />
+                <MenuItem Name="mnuGuardar" Header="_Guardar combinación de colores..."/>
+                <Separator/>
+                <MenuItem Name="mnuColoresApp" Header="_Colores predefinidos">
+                    <MenuItem Name="mnuColorPredeterminado" Header="Predeterminado gsPlay" ToolTip="Combinación predeterminada de la aplicación"/>
+                    <Separator/>
+                    <!-- estos valores se rellenan automáticamente -->
+                    <!--<MenuItem Header="(vacío)" IsEnabled="False"/>-->
+                </MenuItem>
+                <!--<Separator/>-->
+                <MenuItem Name="mnuColoresUser" Header="Colores del _usuario">
+                    <!-- El contenido de este menú se borra completamente y se añaden los que haya -->
+                    <MenuItem Header="(vacío)" IsEnabled="False"/>
+                </MenuItem>
+                <Separator/>
+                <MenuItem Name="mnuCancelar" Header="Cancelar" />
+            </MenuItem>
+        </Menu>
+        <Label Grid.Row="1" Content="Pantalla principal"/>
+        <Label Name="lblPrincipal" Grid.Row="1" Grid.Column="1" Style="{StaticResource labelColores}"/>
+        <!--<StackPanel Grid.Row="1" Grid.Column="2">
+            <StackPanel Style="{StaticResource stackColores}">
+                <Slider Name="slPrincipal1" Style="{StaticResource sliderColores}" Value="0.5" Margin="0,0,8,0"/>
+                <Slider Name="slPrincipal2" Style="{StaticResource sliderColores}" Value="0.5"/>
+            </StackPanel>
+            <StackPanel Style="{StaticResource stackColores}">
+                <Slider Style="{StaticResource sliderColores}" Value="0.5" Margin="0,0,8,0"/>
+                <Slider Style="{StaticResource sliderColores}" Value="0.5"/>
+            </StackPanel>
+            <StackPanel Style="{StaticResource stackColores}">
+                <Slider Style="{StaticResource sliderColores}" Value="0.5" Margin="0,0,8,0"/>
+                <Slider Style="{StaticResource sliderColores}" Value="0.5"/>
+            </StackPanel>
+        </StackPanel>-->
+        <Label Grid.Row="2" Content="Actual"/>
+        <!--<Slider Grid.Row="1" Style="{StaticResource sliderColores}" VerticalAlignment="Bottom" />-->
+        <Label Name="lblActual" Grid.Row="2" Grid.Column="1" Style="{StaticResource labelColores}" Content="Actual" />
+        <Label Grid.Row="3" Content="Listas"/>
+        <Label Name="lblListas" Grid.Row="3" Grid.Column="1" Style="{StaticResource labelColores}" Content="Listas" />
+        <Label Grid.Row="4" Content="Lista actual"/>
+        <Label Name="lblListaActual" Grid.Row="4" Grid.Column="1" Style="{StaticResource labelColores}"  Content="Lista Actual"/>
+        <Label Grid.Row="5" Content="Opciones lista"/>
+        <Label Name="lblOpcionesLista" Grid.Row="5" Grid.Column="1" Style="{StaticResource labelColores}"  Content="Opciones lista"/>
+        <Label Grid.Row="6" Content="Botonera"/>
+        <Label Name="lblBotonera" Grid.Row="6" Grid.Column="1" Style="{StaticResource labelColores}" Content="Botonera" />
+        <StackPanel Orientation="Horizontal" Grid.Row="7" Grid.Column="0" Grid.ColumnSpan="4" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Background="LightYellow">
+            <CheckBox Name="chkBloquear" Margin="8,0,0,0" Content="Bloquear colores" ToolTip="Bloquear los sliders de los colores para que se desplazen al mismo tiempo" VerticalAlignment="Center"/>
+            <CheckBox Name="chkUsarActual" Margin="12,0,0,0" Content="Usar los valores de Actual" ToolTip="Usar los colores de Actual para todos los paneles" VerticalAlignment="Center"/>
+        </StackPanel>
+        <Button Name="btnRestablecerOri" Grid.Row="8" Grid.Column="0" Style="{StaticResource btnNormalBold}" Content="Restablecer original" Margin="8,0,0,0" Width="Auto" ToolTip="Restablecer los colores originales de la aplicación" HorizontalAlignment="Left" VerticalAlignment="Center" />
+        <StackPanel Orientation="Horizontal" Grid.Row="8" Grid.Column="1" Grid.ColumnSpan="4" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="0,0,8,0">
+            <Button Name="btnRestablecer" Style="{StaticResource btnNormalBold}" Content="Restablecer" Margin="24,0,12,0" />
+            <Button Name="btnAceptar" Style="{StaticResource btnNormalBold}" Content="Aceptar" Margin="4,0,0,0" />
+            <Button Name="btnCancelar" Style="{StaticResource btnNormalBold}" Content="Cancelar" Margin="4,0,0,0" />
+        </StackPanel>
+    </Grid>
+</Window>

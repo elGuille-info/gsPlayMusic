@@ -1,0 +1,98 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<!-- 
+	Definición de colores para gsPlay2008 (gsPlayWPF)
+	
+	El formato de cada entrada es <color name="nombre único" description="descripción">
+	Después vienen las definiciones de los colores de fondo y texto
+	si alguno no se indica, se usará el que esté actualmente definido.
+	
+	Definir solo un color por cada fichero.
+	Si se indican valores decimales, usar el punto no la coma.
+	
+	Los valores para los fondos que se pueden definir son:
+		fondoVentana                   El fondo de la ventana principal
+		fondoActual                    El fondo del panel de la canción actual
+		fondoListas                    El fondo de las listas almacenadas
+		fondoListaActual               Para el panel de la lista actual
+		fondoOpcionesListaActual       Para el panel de las opciones de la lista actual
+		fondoBotonera                  Para el panel de la botonera
+	Los valores del texto que se pueden definir son:
+	(con el nombre se sabe a qué panel está relacionado)
+		letraActual
+		letraListas
+		letraListaActual
+		letraOpcionesListaActual
+		letraBotonera
+-->
+<colores>
+	<color name="gsPlay gama 2" description="Variante de los colores predeterminados de gsPlay">
+		<setting name="fondoVentana" serializeAs="String">
+			<value>sc#1; 0; 0; 0|sc#2; 1; 1; 1|</value>
+		</setting>
+		<setting name="fondoActual" serializeAs="String">
+			<value>sc#1; 0; 0; 0.004776953|sc#2; 0; 0.06666667; 0.4800374|</value>
+		</setting>
+		<setting name="fondoListas" serializeAs="String">
+			<value>sc#1; 0.3333333; 0.4833333; 0.68|sc#2; 0.8333333; 0.95; 1|</value>
+		</setting>
+		<setting name="fondoListaActual" serializeAs="String">
+			<value>sc#1; 0.6444797; 0.8166667; 0.7156935|sc#2; 0.6045898; 0.7333333; 0.7401119|</value>
+		</setting>
+		<setting name="fondoOpcionesListaActual" serializeAs="String">
+			<value>sc#1; 0.5712565; 0.75; 0.6067786|sc#2; 0.6666667; 0.7333333; 0.790112|</value>
+		</setting>
+		<setting name="fondoBotonera" serializeAs="String">
+			<value>sc#1; 0.8713671; 0.8631572; 0.3515326|sc#2; 0.9559733; 0.9559733; 1|</value>
+		</setting>
+		<setting name="letraBotonera" serializeAs="String">
+			<value>#FF000000</value>
+		</setting>
+		<setting name="letraListas" serializeAs="String">
+			<value>#FF000000</value>
+		</setting>
+		<setting name="letraOpcionesListaActual" serializeAs="String">
+			<value>#FF000000</value>
+		</setting>
+		<setting name="letraListaActual" serializeAs="String">
+			<value>#FF000000</value>
+		</setting>
+		<setting name="letraActual" serializeAs="String">
+			<value>#FFFFFFFF</value>
+		</setting>
+	</color>
+	<color name="azul2" description="Colores relacionados con tonalidades de azul (2)">
+		<setting name="fondoVentana" serializeAs="String">
+			<value>sc#1; 0; 0; 0|sc#2; 1; 1; 1|</value>
+		</setting>
+		<setting name="fondoActual" serializeAs="String">
+			<value>sc#1; 0; 0; 0.004776953|sc#2; 0; 0.06666667; 0.4800374|</value>
+		</setting>
+		<setting name="fondoListas" serializeAs="String">
+			<value>sc#1; 0.3333333; 0.4833333; 0.68|sc#2; 0.8333333; 0.95; 1|</value>
+		</setting>
+		<setting name="fondoListaActual" serializeAs="String">
+			<value>sc#1; 0.6444797; 0.8166667; 0.7156935|sc#2; 0.6045898; 0.7333333; 0.7401119|</value>
+		</setting>
+		<setting name="fondoOpcionesListaActual" serializeAs="String">
+			<value>sc#1; 0.5712565; 0.75; 0.6067786|sc#2; 0.6666667; 0.7333333; 0.790112|</value>
+		</setting>
+		<setting name="fondoBotonera" serializeAs="String">
+			<value>sc#1; 0.8713671; 0.8631572; 0.3515326|sc#2; 0.9559733; 0.9559733; 1|</value>
+		</setting>
+		<setting name="letraBotonera" serializeAs="String">
+			<value>#FF000000</value>
+		</setting>
+		<setting name="letraListas" serializeAs="String">
+			<value>#FF000000</value>
+		</setting>
+		<setting name="letraOpcionesListaActual" serializeAs="String">
+			<value>#FF000000</value>
+		</setting>
+		<setting name="letraListaActual" serializeAs="String">
+			<value>#FF000000</value>
+		</setting>
+		<setting name="letraActual" serializeAs="String">
+			<value>#FFFFFFFF</value>
+		</setting>
+	</color>
+</colores>

@@ -1,0 +1,457 @@
+﻿<Window
+	xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+	xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+	xml:lang="es-ES"
+	x:Class="MainPlayMusic"
+	x:Name="Window"
+	Title="gsPlayMusic"
+	Width="670" Height="535.502">
+    <!-- Icon="/gsPlayMusic;component/Resources/gsPlayMusic.png" -->
+    <!-- Hay que ponerlo antes de otros valores de Window -->
+    <Window.Resources>
+        <ResourceDictionary Source="gsPlayResourceDictionary.xaml"/>
+    </Window.Resources>
+    <Grid Name="gridMain" Background="{StaticResource fondoVentana}">
+        <Grid.RowDefinitions>
+            <!-- Menú -->
+            <RowDefinition Height="22"/>
+            <!-- Canción actual, listas, botonera -->
+            <RowDefinition Height="500*"/>
+            <!-- Status -->
+            <RowDefinition Height="26"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="26"/>
+            <ColumnDefinition Width="400*"/>
+        </Grid.ColumnDefinitions>
+        <Expander Grid.Row="0" Grid.ColumnSpan="2" Name="expMenu" IsExpanded="False" Header="Menús">
+        </Expander>
+        <!-- El menú principal -->
+        <Menu Name="mnuPrincipal" IsMainMenu="True" Visibility="Collapsed" Grid.Row="0" Grid.Column="1" Margin="0,2,0,0">
+            <MenuItem Name="mnuFichero" Header="_Fichero">
+                <MenuItem Header="_Abrir lista..." Name="mnuAbrirLista">
+                    <MenuItem.Icon>
+                        <Image Style="{StaticResource imgMenu}" Source="Resources/OpenSelectedItemHS.png"/>
+                    </MenuItem.Icon>
+                </MenuItem>
+                <MenuItem Header="_Guardar lista..." Name="mnuGuardarLista">
+                    <MenuItem.Icon>
+                        <Image Style="{StaticResource imgMenu}" Source="Resources/SaveAllHS.png"/>
+                    </MenuItem.Icon>
+                </MenuItem>
+                <!--<Separator/>-->
+                <MenuItem Header="_Seleccionar ficheros..." Name="mnuSelFicheros">
+                    <MenuItem.Icon>
+                        <Image Style="{StaticResource imgMenu}" Source="Resources/BackgroundSoundHS.png"/>
+                    </MenuItem.Icon>
+                </MenuItem>
+                <Separator/>
+                <MenuItem Header="Con_figurar..." Name="mnuConfigurar">
+                    <MenuItem.Icon>
+                        <Image Style="{StaticResource imgMenu}" Source="Resources/_AudioPropertiesHS.png"/>
+                    </MenuItem.Icon>
+                </MenuItem>
+                <MenuItem Header="Configurar colores..." Name="mnuConfigColores">
+                    <MenuItem.Icon>
+                        <Image Style="{StaticResource imgMenu}" Source="Resources/Opciones colores.png"/>
+                    </MenuItem.Icon>
+                </MenuItem>
+                <Separator/>
+                <MenuItem Header="Acerca de..." Name="mnuAcercaDe">
+                    <MenuItem.Icon>
+                        <Image Style="{StaticResource imgMenu}" Source="Resources/acerca de.png"/>
+                    </MenuItem.Icon>
+                </MenuItem>
+                <Separator/>
+                <MenuItem Header="Cerrar" Name="mnuCerrar">
+                    <MenuItem.Icon>
+                        <Image Style="{StaticResource imgMenu}" Source="Resources/StandBy.png"/>
+                    </MenuItem.Icon>
+                </MenuItem>
+            </MenuItem>
+            <MenuItem Name="mnuVer" Header="_Ver">
+                <MenuItem Name="mnuCerrarPaneles" Header="Expandir/contraer los paneles" ToolTip="Cambia el estado de abierto o cerrado de los paneles"/>
+                <Separator/>
+                <MenuItem Name="mnuAcoplar" Header="Acoplar">
+                    <MenuItem Name="mnuAcoplarNormal" Header="Normal" ToolTip="No acopla la ventana, la deja flotante">
+                        <MenuItem.Icon>
+                            <Image Source="Resources/FullScreenHS.png"/>
+                        </MenuItem.Icon>
+                    </MenuItem>
+                    <Separator/>
+                    <MenuItem Name="mnuAcoplarArriba" Header="Arriba" ToolTip="Acopla la ventana en la parte superior de la pantalla">
+                        <MenuItem.Icon>
+                            <Image Source="Resources/ScreenArriba.png"/>
+                        </MenuItem.Icon>
+                    </MenuItem>
+                    <MenuItem Name="mnuAcoplarAbajo" Header="Abajo" ToolTip="Acopla la ventana en la parte inferior de la pantalla">
+                        <MenuItem.Icon>
+                            <Image Source="Resources/ScreenAbajo.png"/>
+                        </MenuItem.Icon>
+                    </MenuItem>
+                    <MenuItem Name="mnuAcoplarIzquierda" Header="Izquierda" ToolTip="Acopla la ventana en la parte izquierda de la pantalla">
+                        <MenuItem.Icon>
+                            <Image Source="Resources/ScreenIzquierda.png"/>
+                        </MenuItem.Icon>
+                    </MenuItem>
+                    <MenuItem Name="mnuAcoplarDerecha" Header="Derecha" ToolTip="Acopla la ventana en la parte derecha de la pantalla">
+                        <MenuItem.Icon>
+                            <Image Source="Resources/ScreenDerecha.png"/>
+                        </MenuItem.Icon>
+                    </MenuItem>
+                    <Separator/>
+                    <MenuItem Name="mnuAcoplarArribaIzq" Header="Arriba a la izquierda" ToolTip="Acopla la ventana en la parte superior izquierda de la pantalla" />
+                    <MenuItem Name="mnuAcoplarArribaCen" Header="Arriba en el centro" ToolTip="Acopla la ventana centrada en la parte superior de la pantalla" />
+                    <MenuItem Name="mnuAcoplarArribaDer" Header="Arriba a la derecha" ToolTip="Acopla la ventana en la parte superior derecha de la pantalla" />
+                    <MenuItem Name="mnuAcoplarCentro" Header="Centro de la pantalla" ToolTip="Acopla la ventana en el centro de la pantalla" />
+                    <MenuItem Name="mnuAcoplarAbajoIzq" Header="Abajo a la izquierda" ToolTip="Acopla la ventana en la parte inferior izquierda de la pantalla"/>
+                    <MenuItem Name="mnuAcoplarAbajoCen" Header="Abajo en el centro" ToolTip="Acopla la ventana centrada en la parte inferior de la pantalla"/>
+                    <MenuItem Name="mnuAcoplarAbajoDer" Header="Abajo a la derecha" ToolTip="Acopla la ventana en la parte inferior derecha de la pantalla"/>
+                </MenuItem>
+                <!--<Separator/>
+                <MenuItem Name="mnuInfoCompleta" Header="Mostrar info completa" ToolTip="Mostrar la información completa de las canciones" IsChecked="True" />
+                <MenuItem Name="mnuInfoUnaLinea" Header="Mostrar info completa en una línea" ToolTip="Si la información completa de las canciones se muestra en una o varias líneas" IsChecked="True" />-->
+                <Separator/>
+                <MenuItem Name="mnuOcultarMini" Header="Ocultar al minimizar" IsChecked="True" ToolTip="Selecciona esta opción para ocultar la ventana principal cuando esté minimizada" />
+            </MenuItem>
+            <MenuItem Name="mnuReproduccion" Header="_Reproducción">
+                <MenuItem Header="_Tocar lista" Name="mnuTocarLista">
+                    <MenuItem.Icon>
+                        <Image Style="{StaticResource imgMenu}" Source="Resources/vcr_Play_DocumentHS.png"/>
+                    </MenuItem.Icon>
+                </MenuItem>
+                <MenuItem Header="_Parar lista" Name="mnuPararLista">
+                    <MenuItem.Icon>
+                        <Image Style="{StaticResource imgMenu}" Source="Resources/vcr_Stop_DocumentHS.png"/>
+                    </MenuItem.Icon>
+                </MenuItem>
+                <MenuItem Header="_Reiniciar lista" Name="mnuReiniciarLista">
+                    <MenuItem.Icon>
+                        <Image Style="{StaticResource imgMenu}" Source="Resources/PlayHS.png"/>
+                    </MenuItem.Icon>
+                </MenuItem>
+                <Separator/>
+                <MenuItem Header="Primera" Name="mnuPrimera">
+                    <MenuItem.Icon>
+                        <Image Style="{StaticResource imgMenu}" Source="Resources/vcr_MoveFirstHS.png"/>
+                    </MenuItem.Icon>
+                </MenuItem>
+                <MenuItem Header="Anterior" Name="mnuAnterior">
+                    <MenuItem.Icon>
+                        <Image Style="{StaticResource imgMenu}" Source="Resources/vcr_MovePreviousHS.png"/>
+                    </MenuItem.Icon>
+                </MenuItem>
+                <MenuItem Header="Siguiente" Name="mnuSiguiente">
+                    <MenuItem.Icon>
+                        <Image Style="{StaticResource imgMenu}" Source="Resources/vcr_MoveNextHS.png"/>
+                    </MenuItem.Icon>
+                </MenuItem>
+                <MenuItem Header="Última" Name="mnuUltima">
+                    <MenuItem.Icon>
+                        <Image Style="{StaticResource imgMenu}" Source="Resources/vcr_MoveLastHS.png"/>
+                    </MenuItem.Icon>
+                </MenuItem>
+                <Separator/>
+                <MenuItem Header="Pausa" Name="mnuPausa">
+                    <MenuItem.Icon>
+                        <Image Style="{StaticResource imgMenu}" Source="Resources/PauseHS.png"/>
+                    </MenuItem.Icon>
+                </MenuItem>
+                <MenuItem Header="Parar actual" Name="mnuParar">
+                    <MenuItem.Icon>
+                        <Image Style="{StaticResource imgMenu}" Source="Resources/StopHS.png"/>
+                    </MenuItem.Icon>
+                </MenuItem>
+            </MenuItem>
+            <MenuItem Name="mnuVolumen" Header="V_olumen">
+                <MenuItem Header="Subir volumen" Name="mnuSubirVol">
+                    <MenuItem.Icon>
+                        <Image Style="{StaticResource imgMenu}" Source="Resources/_AudioSubirHS.png"/>
+                    </MenuItem.Icon>
+                </MenuItem>
+                <MenuItem Header="Bajar volumen" Name="mnuBajarVol">
+                    <MenuItem.Icon>
+                        <Image Style="{StaticResource imgMenu}" Source="Resources/_AudioBajarHS.png"/>
+                    </MenuItem.Icon>
+                </MenuItem>
+                <MenuItem Header="Silencio total" Name="mnuSilencio">
+                    <MenuItem.Icon>
+                        <Image Style="{StaticResource imgMenu}" Source="Resources/volumenOn.png"/>
+                    </MenuItem.Icon>
+                </MenuItem>
+            </MenuItem>
+        </Menu>
+        <Grid Grid.Row="1" Grid.ColumnSpan="2">
+            <StackPanel>
+                <!-- La canción actual -->
+                <StackPanel Style="{StaticResource stackExpander}">
+                    <Expander IsExpanded="True" Header="Canción actual" Name="expActual" 
+                              HorizontalAlignment="Stretch" Background="{StaticResource fondoActual}" 
+                              Foreground="{StaticResource textoActual}">
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="120"/>
+                                <ColumnDefinition Width="80"/>
+                                <ColumnDefinition Width="44"/>
+                                <ColumnDefinition/>
+                                <ColumnDefinition Width="30"/>
+                            </Grid.ColumnDefinitions>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="26"/>
+                                <RowDefinition Height="26"/>
+                            </Grid.RowDefinitions>
+                            <Label Grid.ColumnSpan="4" Name="lblFullName" Style="{StaticResource styNombreFichero}" Content="Nombre completo de la canción" HorizontalAlignment="Stretch" ToolTip="Nombre completo de la canción" Foreground="{Binding Foreground, ElementName=expActual}" />
+                            <Button Grid.Column="4" Name="btnTocar" Style="{StaticResource btnImage}" ToolTip="Toca la canción que actualmente está seleccionada" Margin="0,0,8,0">
+                                <Image Source="Resources/vcr_MoveNextHS.png"/>
+                            </Button>
+                            <Label Name="lblFecha" Style="{StaticResource styActual}" Grid.Row="1" Grid.Column="0" Content="02/02/07 22:22:22" ToolTip="Fecha (UTC/GMT) del fichero" Foreground="{Binding Foreground, ElementName=expActual}"/>
+                            <Label Name="lblTamaño" Style="{StaticResource styActual}" Grid.Row="1" Grid.Column="1" Content="555.55 MB" ToolTip="Tamaño (en mega bytes) del fichero actual" Foreground="{Binding Foreground, ElementName=expActual}"/>
+                            <Label Name="lblDuracion" Grid.Row="1" Grid.Column="2" Style="{StaticResource styActual}" Content="00:00" ToolTip="Duración en minutos y segundos de la canción actual" Foreground="{Binding Foreground, ElementName=expActual}"/>
+                            <Label Name="lblNombre" Style="{StaticResource styActual}" Grid.Row="1" Grid.Column="3" Grid.ColumnSpan="2" Content="Nombre" ToolTip="Nombre del fichero (canción) actual" HorizontalAlignment="Right" Foreground="{Binding Foreground, ElementName=expActual}"/>
+                        </Grid>
+                    </Expander>
+                </StackPanel>
+                <!-- Las listas y la botonera -->
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="400*" />
+                        <ColumnDefinition Width="135" />
+                    </Grid.ColumnDefinitions>
+                    <!-- listas y lista actual -->
+                    <StackPanel Grid.Column="0">
+                        <StackPanel Style="{StaticResource stackExpander}">
+                            <Expander Name="expListas" Background="{StaticResource fondoListas}" Foreground="{StaticResource textoListas}" IsExpanded="True" Header="Listas" HorizontalAlignment="Stretch">
+                                <Grid>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="90"/>
+                                        <ColumnDefinition Width="100*"/>
+                                        <ColumnDefinition Width="200*"/>
+                                        <ColumnDefinition Width="54" />
+                                    </Grid.ColumnDefinitions>
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="26"/>
+                                    </Grid.RowDefinitions>
+                                    <Label Name="labelListaActual" Margin="0" Height="23" Content="Lista actual:" VerticalAlignment="Top" Foreground="{Binding Foreground, ElementName=expListas}" />
+                                    <ComboBox  Style="{StaticResource btnNormal}" Grid.Column="1" Grid.ColumnSpan="2" Margin="0,0,4,0" Name="cboListas" IsSynchronizedWithCurrentItem="True" MinWidth="200" Height="22" Foreground="{Binding Foreground, ElementName=expListas}"/>
+                                    <Button Style="{StaticResource btnNormalBold}" Grid.Column="3" Name="btnAbrirReciente" VerticalAlignment="Top" Content="Abrir" Width="Auto" Margin="0,0,4,0" Foreground="{Binding Foreground, ElementName=expListas}"/>
+                                </Grid>
+                            </Expander>
+                        </StackPanel>
+                        <StackPanel Style="{StaticResource stackExpander}" Margin="0,0,0,4">
+                            <Expander Name="expListaActual" Background="{StaticResource fondoListaActual}" Foreground="{StaticResource textoListaActual}" IsExpanded="True" Header="Lista actual" HorizontalAlignment="Stretch">
+                                <Grid>
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="Auto" />
+                                        <RowDefinition Height="60*"/>
+                                    </Grid.RowDefinitions>
+                                    <ListView Name="lvCanciones" Margin="0,0,8,8" Grid.Row="0" MinHeight="150" 
+                                              HorizontalAlignment="Stretch"  VerticalAlignment="Top"
+                                              IsSynchronizedWithCurrentItem="True"
+                                              GridViewColumnHeader.Click="lvCanciones_ColumnHeaderClick" >
+                                        <!--<ListView.Resources>
+                                            <DataTemplate x:Key="DuracionTemplate">
+                                                <TextBlock Text="{Binding DuraciónList}" HorizontalAlignment="Right"/>
+                                            </DataTemplate>
+                                            <DataTemplate x:Key="FechaTemplate">
+                                                <TextBlock Text="{Binding FechaList}" HorizontalAlignment="Right"/>
+                                            </DataTemplate>
+                                            <DataTemplate x:Key="TamañoTemplate">
+                                                <TextBlock Text="{Binding TamañoList}" HorizontalAlignment="Right"/>
+                                            </DataTemplate>
+                                        </ListView.Resources>-->
+                                        <ListView.View>
+                                            <GridView AllowsColumnReorder="True">
+                                                <GridViewColumn Header="Nombre" DisplayMemberBinding="{Binding Nombre}" Width="340"
+                                                                HeaderTemplate="{StaticResource templateHeader}"/>
+                                                <GridViewColumn Header="Duración" DisplayMemberBinding="{Binding DuraciónList}" Width="70" 
+                                                                HeaderTemplate="{StaticResource templateHeader}"/>
+                                                <GridViewColumn Header="Fecha" DisplayMemberBinding="{Binding FechaList}" Width="110" 
+                                                                HeaderTemplate="{StaticResource templateHeader}"/>
+                                                <GridViewColumn Header="Directorio" DisplayMemberBinding="{Binding Directorio}" Width="150"
+                                                                HeaderTemplate="{StaticResource templateHeader}"/>
+                                                <GridViewColumn Header="Nombre completo" DisplayMemberBinding="{Binding FullName}" Width="400"
+                                                                HeaderTemplate="{StaticResource templateHeader}"/>
+                                                <GridViewColumn Header="Tamaño" DisplayMemberBinding="{Binding TamañoList}"
+                                                                HeaderTemplate="{StaticResource templateHeader}"/>
+                                            </GridView>
+                                        </ListView.View>
+                                    </ListView>
+                                    <!--<GridSplitter Grid.Row="1" HorizontalAlignment="Stretch" VerticalAlignment="Top" Height="4"/>-->
+                                    <!--<StackPanel Grid.Row="1" Style="{StaticResource stackExpander}">-->
+                                        <Expander Grid.Row="1" Margin="0,0,0,4" Name="expOpcionesLista" Header="Opciones de la lista" IsExpanded="True" HorizontalAlignment="Stretch" Background="{StaticResource fondoOpcionesLista}" Foreground="{StaticResource textoOpcionesLista}">
+                                            <Grid>
+                                                <Grid.RowDefinitions>
+                                                    <RowDefinition Height="28"/>
+                                                </Grid.RowDefinitions>
+                                                <Grid.ColumnDefinitions>
+                                                    <ColumnDefinition Width="130" />
+                                                    <ColumnDefinition />
+                                                    <ColumnDefinition Width="30" />
+                                                </Grid.ColumnDefinitions>
+                                                <StackPanel Grid.Row="0" Grid.Column="0" Orientation="Horizontal" Margin="4,4,0,0" HorizontalAlignment="Left">
+                                                    <Button Name="btnSubir" Style="{StaticResource btnImage}" ToolTip="Subir una posición el fichero seleccionado">
+                                                    <Image Source="Resources/FillUpHS.png"/>
+                                                    </Button>
+                                                    <Button Name="btnBajar" Style="{StaticResource btnImage}" ToolTip="Bajar una posición el fichero seleccionado">
+                                                    <Image Source="Resources/FillDownHS.png"/>
+                                                    </Button>
+                                                    <Label/>
+                                                    <Button Name="btnClasificar" Style="{StaticResource btnImage}" ToolTip="Clasificar el contenido de la lista">
+                                                    <Image Source="Resources/SortUpHS.png"/>
+                                                        <Button.ContextMenu>
+                                                            <ContextMenu Name="mnuClasificarContext">
+                                                                <MenuItem Name="mnuClasificarNombre" Header="Clasificar por el _nombre" ToolTip="Clasificar las canciones por el nombre"/>
+                                                                <MenuItem Name="mnuClasificarDirectorio" Header="Clasificar por el _directorio" ToolTip="Clasificar las canciones por el directorio" />
+                                                                <MenuItem Name="mnuClasificarTamaño" Header="Clasificar por el _tamaño" ToolTip="Clasificar las canciones por el tamaño" />
+                                                                <MenuItem Name="mnuClasificarFecha" Header="Clasificar por la _fecha" ToolTip="Clasificar las canciones por la fecha" />
+                                                                <MenuItem Name="mnuClasificarDuración" Header="Clasificar por la d_uración" ToolTip="Clasificar las canciones por la duración (antes hay que calcular el tiempo total)" />
+                                                                <MenuItem Name="mnuClasificarFullName" IsChecked="True" Header="Clasificar por el nombre _completo" ToolTip="Clasificar las canciones por el nombre completo"/>
+                                                            </ContextMenu>
+                                                        </Button.ContextMenu>
+                                                    </Button>
+                                                    <Label/>
+                                            </StackPanel>
+                                            <Button Grid.Row="0" Grid.Column="2" Name="btnBorrarLista" Style="{StaticResource btnImage}" ToolTip=" Borrar el contenido de la lista " VerticalAlignment="Center">
+                                                <Image Source="Resources/DocumentoBorrarRojo.png"/>
+                                                </Button>
+                                            </Grid>
+                                        </Expander>
+                                    <!--</StackPanel>-->
+                                </Grid>
+                            </Expander>
+                        </StackPanel>
+                    </StackPanel>
+                    <!-- La botonera -->
+                    <StackPanel Style="{StaticResource stackExpander}" Grid.Column="1" Margin="4,4,4,95.555">
+                        <Expander Name="expBotonera" Header="Botonera" IsExpanded="True" VerticalAlignment="Stretch" Background="{StaticResource fondoBotonera}" Foreground="{StaticResource textoBotonera}">
+                            <Grid>
+                                <StackPanel>
+                                    <Label/>
+                                    <StackPanel Style="{StaticResource stack}" Height="23" HorizontalAlignment="Center">
+                                        <Button Name="btnPausa" Style="{StaticResource btnImage}" ToolTip="Pausar / reanudar">
+                                            <Image Source="Resources/PauseHS.png"/>
+                                        </Button>
+                                        <Button Name="btnParar" Style="{StaticResource btnImage}" ToolTip="Detener la actual (si está tocando la lista, pasará a la siguiente)">
+                                            <Image Source="Resources/StopHS.png"/>
+                                        </Button>
+                                    </StackPanel>
+                                    <StackPanel>
+                                        <Label Height="8" />
+                                    </StackPanel>
+                                    <StackPanel>
+                                        <StackPanel Style="{StaticResource stack}" Height="24" Width="90" HorizontalAlignment="Center">
+                                            <Label Name="lblInfo" Style="{StaticResource negroLime}" Content="00:00" ToolTip=" Tiempo total " />
+                                            <Separator Width="4" />
+                                            <Label Name="lblInfo2" Style="{StaticResource negroLime}" Content="00:00" ToolTip=" Tiempo restante " />
+                                        </StackPanel>
+                                        <StackPanel>
+                                            <Label Height="8" />
+                                            <ScrollBar Name="scrollPosicion" Width="100" Orientation="Horizontal" Margin="0" Height="12" Maximum="100" LargeChange="10" Value="50" MinWidth="20" MinHeight="12" SmallChange="1" ToolTip="Posición" />
+                                        </StackPanel>
+                                        <StackPanel>
+                                            <Label Height="8" />
+                                        </StackPanel>
+                                        <StackPanel>
+                                            <Slider Name="trackVol" HorizontalAlignment="Center" Width="100" Height="24" TickPlacement="TopLeft" LargeChange="5" Value="5" SmallChange="1" ToolTip="Volumne (50%)"  MinHeight="22"/>
+                                            <Label Height="4" />
+                                            <StackPanel>
+                                                <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Height="23">
+                                                    <Button Name="btnBajarVolumen" Style="{StaticResource btnImage}" ToolTip="Bajar el volumen">
+                                                        <Image Source="Resources/_AudioBajarHS.png"/>
+                                                    </Button>
+                                                    <Button Name="btnSubirVolumen" Style="{StaticResource btnImage}" ToolTip="Subir el volumen">
+                                                        <Image Source="Resources/_AudioSubirHS.png"/>
+                                                    </Button>
+                                                    <Label/>
+                                                    <Separator/>
+                                                    <Label/>
+                                                    <Button Name="btnSilencio" Style="{StaticResource btnImage}" ToolTip=" Activar / desactivar el volumen ">
+                                                        <Image Name="picVol" Visibility="Visible" Source="Resources/volumenOn.png"/>
+                                                    </Button>
+                                                </StackPanel>
+                                            </StackPanel>
+                                        </StackPanel>
+                                    </StackPanel>
+                                    <StackPanel>
+                                        <Label Height="4" />
+                                        <Separator/>
+                                    </StackPanel>
+                                    <StackPanel>
+                                        <Label Content="Opciones:" Foreground="{Binding Foreground, ElementName=expBotonera}"/>
+                                        <StackPanel VerticalAlignment="Center">
+                                            <CheckBox Name="chkRepeat" Style="{StaticResource margin40}" ToolTip="Repetir la lista" Foreground="{Binding Foreground, ElementName=expBotonera}">Repeat</CheckBox>
+                                            <CheckBox Name="chkShuffle" Style="{StaticResource margin40}" ToolTip="Mezclar aleatoriamente las canciones" Foreground="{Binding Foreground, ElementName=expBotonera}">Shuffle</CheckBox>
+                                            <CheckBox Name="chkMezclar" Style="{StaticResource margin40}" IsChecked="True" ToolTip="Mezclar el inicio y final de las canciones" Foreground="{Binding Foreground, ElementName=expBotonera}">Mezclar canciones</CheckBox>
+                                        </StackPanel>
+                                    </StackPanel>
+                                    <StackPanel>
+                                        <Label Height="8" />
+                                    </StackPanel>
+                                    <StackPanel>
+                                        <StackPanel Style="{StaticResource stack}" HorizontalAlignment="Center" Height="23">
+                                            <Button Name="btnTocarLista" Style="{StaticResource btnImage}" ToolTip="Tocar la lista">
+                                                <Image Source="Resources/vcr_Play_DocumentHS.png"/>
+                                            </Button>
+                                            <Button Name="btnPararLista" Style="{StaticResource btnImage}" ToolTip="Parar la lista">
+                                                <Image Source="Resources/vcr_Stop_DocumentHS.png"/>
+                                            </Button>
+                                            <Label Width="4"/>
+                                            <Button Name="btnReiniciarLista" Style="{StaticResource btnImage}" ToolTip="Reiniciar la lista">
+                                                <Image Source="Resources/PlayHS.png"/>
+                                            </Button>
+                                        </StackPanel>
+                                    </StackPanel>
+                                    <StackPanel>
+                                        <Label Height="8" />
+                                    </StackPanel>
+                                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                                        <Button Name="btnPrimera" Style="{StaticResource btnImage}" ToolTip="Ir a la primera">
+                                            <Image Source="Resources/vcr_MoveFirstHS.png"/>
+                                        </Button>
+                                        <Button Name="btnAnterior" Style="{StaticResource btnImage}" ToolTip="Ir a la anterior">
+                                            <Image Source="Resources/vcr_MovePreviousHS.png"/>
+                                        </Button>
+                                        <Button Name="btnSiguiente" Style="{StaticResource btnImage}" ToolTip="Ir a la siguiente">
+                                            <Image Source="Resources/vcr_MoveNextHS.png"/>
+                                        </Button>
+                                        <Button Name="btnUltima" Style="{StaticResource btnImage}" ToolTip="Ir a la última">
+                                            <Image Source="Resources/vcr_MoveLastHS.png"/>
+                                        </Button>
+                                    </StackPanel>
+                                    <Label/>
+                                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                                        <Button Name="btnAñadirCanciones" Style="{StaticResource btnImage}" ToolTip=" Añadir canciones a la lista actual ">
+                                            <Image Source="Resources/BackgroundSoundHS.png"/>
+                                        </Button>
+                                        <Label/>
+                                        <Button Name="btnAbrirLista" Style="{StaticResource btnImage}" ToolTip=" Cargar una lista .m3u ">
+                                            <Image Source="Resources/OpenSelectedItemHS.png"/>
+                                        </Button>
+                                        <Label Width="4"/>
+                                        <Button Name="btnGuardarLista" Style="{StaticResource btnImage}" ToolTip=" Guardar la lista en un fichero .m3u ">
+                                            <Image Source="Resources/SaveAllHS.png"/>
+                                        </Button>
+                                    </StackPanel>
+                                    <Label/>
+                                </StackPanel>
+                            </Grid>
+                        </Expander>
+                    </StackPanel>
+                </Grid>
+            </StackPanel>
+        </Grid>
+        <!-- La fila inferior -->
+        <Grid Name="gridStatus" Grid.Row="2" Grid.ColumnSpan="2" Background="WhiteSmoke">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="200"/>
+                <ColumnDefinition Width="300*"/>
+                <ColumnDefinition Width="36"/>
+            </Grid.ColumnDefinitions>
+            <Label Name="lblStatusVersion" Grid.Column="0" Style="{StaticResource status}" Content="gsPlayMusic v3.0.0.0 (v3.0.0.0)"/>
+            <Label Grid.Column="1" Style="{StaticResource status}" Name="lblStatus" Content="©Guillermo Som (elGuille), 2002-2021" />
+            <Button Grid.Column="2" Name="btnCerrar" Style="{StaticResource btnImage}" ToolTip="Cerrar el programa">
+                <Image Source="Resources/StandBy.png"/>
+            </Button>
+        </Grid>
+    </Grid>
+</Window>

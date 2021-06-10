@@ -1,0 +1,274 @@
+﻿<!-- Poner aquí las definiciones de los recursos a usar en la aplicación (18/Ago/07) -->
+    
+<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+
+    <!-- 
+        Los recursos con nombre para usar con StaticResource 
+    -->
+
+    <!--<FontFamily x:Key="miFuente">
+        <FontFamily.FamilyTypefaces>
+            <FamilyTypeface UnderlinePosition="-0.1" UnderlineThickness="0.05" />
+        </FontFamily.FamilyTypefaces>
+    </FontFamily>-->
+
+
+    <!-- Los recursos para la cabecera del ListView (22/Ago/07) -->
+    <Style x:Key="imgSortUp" TargetType="Image">
+        <Setter Property="Source" Value="Resources/sortUp6.gif"/>
+        <Setter Property="Height" Value="6"/>
+        <Setter Property="Width" Value="9"/>
+    </Style>
+    <Style x:Key="imgSortDown" TargetType="Image">
+        <Setter Property="Source" Value="Resources/sortDown6.gif"/>
+        <Setter Property="Height" Value="6"/>
+        <Setter Property="Width" Value="9"/>
+    </Style>
+    <Style x:Key="imgSort" TargetType="Image">
+        <Setter Property="Source" Value="Resources/sortDown6.gif"/>
+        <Setter Property="Height" Value="6"/>
+        <Setter Property="Width" Value="9"/>
+        <Setter Property="OpacityMask" Value="#FFFFFFFF"/>
+    </Style>
+    <DataTemplate x:Key="templateHeaderUp">
+        <DockPanel>
+            <Image Style="{StaticResource imgSortUp}" DockPanel.Dock="Top" HorizontalAlignment="Center"/>
+            <TextBlock HorizontalAlignment="Left">
+                <TextBlock.Text>
+                    <Binding/>
+                </TextBlock.Text>
+            </TextBlock>
+        </DockPanel>
+    </DataTemplate>
+    <DataTemplate x:Key="templateHeaderDown">
+        <DockPanel>
+            <Image Style="{StaticResource imgSortDown}" DockPanel.Dock="Top" HorizontalAlignment="Center"/>
+            <TextBlock HorizontalAlignment="Left">
+                <TextBlock.Text>
+                    <Binding/>
+                </TextBlock.Text>
+            </TextBlock>
+        </DockPanel>
+    </DataTemplate>
+    <DataTemplate x:Key="templateHeaderDownRight">
+        <DockPanel>
+            <Image Style="{StaticResource imgSortDown}" DockPanel.Dock="Top" HorizontalAlignment="Center"/>
+            <TextBlock HorizontalAlignment="Right">
+                <TextBlock.Text>
+                    <Binding/>
+                </TextBlock.Text>
+            </TextBlock>
+        </DockPanel>
+    </DataTemplate>
+    <DataTemplate x:Key="templateHeaderUpRight">
+        <DockPanel>
+            <Image Style="{StaticResource imgSortUp}" DockPanel.Dock="Top" HorizontalAlignment="Center"/>
+            <TextBlock HorizontalAlignment="Right">
+                <TextBlock.Text>
+                    <Binding/>
+                </TextBlock.Text>
+            </TextBlock>
+        </DockPanel>
+    </DataTemplate>
+    <DataTemplate x:Key="templateHeaderRight">
+        <DockPanel>
+            <TextBlock HorizontalAlignment="Right" DockPanel.Dock="Right">
+                <TextBlock.Text>
+                    <Binding/>
+                </TextBlock.Text>
+            </TextBlock>
+        </DockPanel>
+    </DataTemplate>
+    <DataTemplate x:Key="templateHeader">
+        <DockPanel>
+            <TextBlock HorizontalAlignment="Left" DockPanel.Dock="Left">
+                <TextBlock.Text>
+                    <Binding/>
+                </TextBlock.Text>
+            </TextBlock>
+        </DockPanel>
+    </DataTemplate>
+    <!-- Fin de recursos para el ListView -->
+
+
+    <Style x:Key="labelColores" TargetType="Label">
+        <Setter Property="Height" Value="78"/>
+        <Setter Property="Width" Value="110"/>
+    </Style>
+    
+    <Style x:Key="sliderColores" TargetType="Slider">
+        <Setter Property="Maximum" Value="10"/>
+        <Setter Property="SmallChange" Value="0.1"/>
+        <Setter Property="LargeChange" Value="1"/>
+        <Setter Property="TickPlacement" Value="TopLeft"/>
+        <Setter Property="Width" Value="70"/>
+        <Setter Property="Height" Value="20"/>
+    </Style>
+    
+    <Style x:Key="stackColores" TargetType="StackPanel">
+        <Setter Property="Orientation" Value="Horizontal" />
+        <Setter Property="VerticalAlignment" Value="Center" />
+        <Setter Property="HorizontalAlignment" Value="Center" />
+    </Style>
+
+    <Style x:Key="imgMenu" TargetType="Image">
+        <Setter Property="Height" Value="16"/>
+        <Setter Property="Width" Value="16"/>
+    </Style>
+    <Style x:Key="status" TargetType="{x:Type Control}">
+        <Setter Property="Margin" Value="4,0,0,0"/>
+        <Setter Property="VerticalAlignment" Value="Top"/>
+    </Style>
+    
+    <!-- Estilo para los botones con imágenes -->
+    <Style x:Key="btnImage" TargetType="{x:Type Control}">
+        <Setter Property="VerticalAlignment" Value="Top" />
+        <Setter Property="Height" Value="23"/>
+        <Setter Property="Width" Value="22" />
+        <Setter Property="Margin" Value="2, 0, 0, 0"/>
+    </Style>
+    
+    <!-- Estilo para los botones normales -->
+    <Style x:Key="btnNormal" TargetType="{x:Type Control}">
+        <Setter Property="VerticalAlignment" Value="Top" />
+        <Setter Property="Height" Value="23"/>
+        <Setter Property="Background" Value="Transparent"/>
+    </Style>
+    <Style x:Key="btnNormal75" TargetType="{x:Type Control}" BasedOn="{StaticResource btnNormal}">
+        <Setter Property="Width" Value="75" />
+    </Style>
+    <Style x:Key="btnNormalBold" TargetType="{x:Type Control}" BasedOn="{StaticResource btnNormal75}">
+        <Setter Property="FontWeight" Value="Bold"/>
+    </Style>
+
+    <!-- Botón normal no transparente -->
+    <Style x:Key="btnNormal2" TargetType="Control">
+        <Setter Property="VerticalAlignment" Value="Top" />
+        <Setter Property="Height" Value="23"/>
+        <Setter Property="Width" Value="75" />
+    </Style>
+
+    <!-- Estilo para las etiquetas de la canción actual -->
+    <Style x:Key="styActual" TargetType="Control">
+        <Setter Property="Background" Value="Transparent"/>
+        <Setter Property="Foreground" Value="White" />
+        <Setter Property="FontWeight" Value="Bold"/>
+        <Setter Property="Margin" Value="0"/>
+        <Setter Property="VerticalAlignment" Value="Top"/>
+        <Setter Property="HorizontalAlignment" Value="Center" />
+    </Style>
+    
+    <!-- Estilo para el nombre del fichero -->
+    <Style x:Key="styNombreFichero" TargetType="Control">
+        <Setter Property="Background" Value="Transparent"/>
+        <Setter Property="Foreground" Value="Yellow" />
+        <Setter Property="FontWeight" Value="Bold"/>
+        <Setter Property="Margin" Value="0"/>
+        <Setter Property="VerticalAlignment" Value="Top"/>
+    </Style>
+    
+    <!-- Estilo para las etiquetas del tiempo -->
+    <Style x:Key="negroLime" TargetType="{x:Type Control}">
+        <Setter Property="Background" Value="Black"/>
+        <Setter Property="Foreground" Value="Lime" />
+        <Setter Property="FontWeight" Value="Bold"/>
+        <Setter Property="Margin" Value="0, 0, 0, 0"/>
+    </Style>
+    
+    <Style x:Key="margin40" TargetType="{x:Type Control}">
+        <Setter Property="Margin" Value="4,0" />
+    </Style>
+    
+    <!-- Estilos para los StackPanel -->
+    <Style x:Key="stack" TargetType="{x:Type StackPanel}">
+        <Setter Property="Orientation" Value="Horizontal"/>
+        <Setter Property="VerticalAlignment" Value="Top"/>
+    </Style>
+    <Style x:Key="stackExpander" TargetType="{x:Type StackPanel}">
+        <Setter Property="Margin" Value="0,4,0,4"/>
+        <Setter Property="VerticalAlignment" Value="Top"/>
+    </Style>
+    <Style x:Key="stackTopRight" TargetType="{x:Type StackPanel}">
+        <Setter Property="Orientation" Value="Horizontal"/>
+        <Setter Property="VerticalAlignment" Value="Top"/>
+        <Setter Property="HorizontalAlignment" Value="Right"/>
+    </Style>
+    
+    <!-- Los colores de fondo de los expander -->
+    
+    <LinearGradientBrush x:Key="fondoActual" StartPoint="0,0.5" EndPoint="1,0.5">
+        <GradientStop Color="#FF00000F" Offset="0"/>
+        <GradientStop Color="#FF00009F" Offset="1"/>
+    </LinearGradientBrush>
+    
+    <!--<SolidColorBrush x:Key="fondoActual" Color="Black" />-->
+    <!-- #FFD2DCFF -->
+    <!--<SolidColorBrush x:Key="fondoListas" Color="#FFFFD2DC" />-->
+    <LinearGradientBrush x:Key="fondoListas" StartPoint="0,0.5" EndPoint="1,0.5">
+        <GradientStop Color="sc#1, 0.3333333, 0.4833333, 0.68" Offset="0"/>
+        <GradientStop Color="sc#2, 0.8333333, 0.95, 1" Offset="1"/>
+    </LinearGradientBrush>
+
+    <!--<SolidColorBrush x:Key="fondoListaActual" Color="#FFD2FFDC" />-->
+    <LinearGradientBrush x:Key="fondoListaActual" StartPoint="0,0.5" EndPoint="1,0.5">
+        <GradientStop Color="sc#1, 0.6444797, 0.8166667, 0.7156935" Offset="0"/>
+        <GradientStop Color="sc#2, 0.6045898, 0.7333333, 0.7401119" Offset="1"/>
+    </LinearGradientBrush>
+
+    <!--<SolidColorBrush x:Key="fondoOpcionesLista" Color="#FFF2FFFC" />-->
+    <LinearGradientBrush x:Key="fondoOpcionesLista" StartPoint="0,0.5" EndPoint="1,0.5">
+        <GradientStop Color="sc#1, 0.6545898, 0.6333333, 0.6234453" Offset="0"/>
+        <GradientStop Color="sc#2, 0.6666667, 0.7333333, 0.790112" Offset="1"/>
+    </LinearGradientBrush>
+    
+    <!--<SolidColorBrush x:Key="fondoBotonera" Color="FloralWhite" #FFE0EAF0 />-->
+    <!--<GradientStop Color="#FFE0EAF0" Offset="0.7"/>-->
+    <LinearGradientBrush x:Key="fondoBotonera" StartPoint="0.5,0" EndPoint="0.5,1">
+        <GradientStop Color="#FFF0EFA0" Offset="0"/>
+        <GradientStop Color="#FFFAFAFF" Offset="1"/>
+    </LinearGradientBrush>
+
+    <LinearGradientBrush x:Key="fondoVentana" EndPoint="1,0.5" StartPoint="0,0.5">
+        <GradientStop Color="#FF000000" Offset="0"/>
+        <GradientStop Color="#FFFFFFFF" Offset="1"/>
+        <!--<GradientStop Color="#FFAFAFAF" Offset="0.808"/>
+            <GradientStop Color="#FF040404" Offset="0.135"/>
+            <GradientStop Color="#FF8B8B8B" Offset="0.596"/>-->
+    </LinearGradientBrush>
+
+    <!-- Los colores de las letras de los expander -->
+    <SolidColorBrush x:Key="textoActual" Color="White" />
+    <SolidColorBrush x:Key="textoListas" Color="Black" />
+    <SolidColorBrush x:Key="textoListaActual" Color="Black" />
+    <SolidColorBrush x:Key="textoOpcionesLista" Color="Black" />
+    <SolidColorBrush x:Key="textoBotonera" Color="Black" />
+
+    <Style x:Key="controlAboutBold" TargetType="Control">
+        <Setter Property="Background" Value="Transparent"/>
+        <Setter Property="Foreground" Value="White" />
+        <Setter Property="FontWeight" Value="Bold"/>
+    </Style>
+    <Style x:Key="controlAboutBold16" TargetType="Control">
+        <Setter Property="Background" Value="Transparent"/>
+        <Setter Property="Foreground" Value="White" />
+        <Setter Property="FontWeight" Value="Bold"/>
+        <Setter Property="FontSize" Value="16"/>
+    </Style>
+    <Style x:Key="controlAbout" TargetType="Control">
+        <Setter Property="Background" Value="Transparent"/>
+        <Setter Property="Foreground" Value="White" />
+    </Style>
+    
+    <Style x:Key="btnAboutBold" TargetType="{x:Type Control}" BasedOn="{StaticResource controlAbout}">
+        <Setter Property="VerticalAlignment" Value="Top" />
+        <Setter Property="Height" Value="23"/>
+        <Setter Property="FontWeight" Value="Bold"/>
+        <Setter Property="Width" Value="75" />
+    </Style>
+
+    <Style x:Key="controlConfig" TargetType="FrameworkElement">
+        <Setter Property="Margin" Value="4,4,0,0"/>
+    </Style>
+
+</ResourceDictionary>

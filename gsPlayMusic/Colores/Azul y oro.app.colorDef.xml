@@ -1,0 +1,71 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<!-- 
+	Definición  de colores para gsPlay (gsPlayWPF) - ©Guillermo 'guille' Som 
+	
+	Definiciaón creada el 20/ago/2007 20:14:12 UTC/GMT
+	
+	El formato de cada entrada es <color name="nombre único" description="descripción">
+	Después vienen las definiciones de los colores de fondo y texto
+	si alguno no se indica, se usará el que esté actualmente definido.
+	
+	Definir solo un color por cada fichero.
+	Si se indican valores decimales, usar el punto no la coma.
+	
+	Los valores para los fondos que se pueden definir son:
+		fondoVentana                   El fondo de la ventana principal
+		fondoActual                    El fondo del panel de la canción actual
+		fondoListas                    El fondo de las listas almacenadas
+		fondoListaActual               Para el panel de la lista actual
+		fondoOpcionesListaActual       Para el panel de las opciones de la lista actual
+		fondoBotonera                  Para el panel de la botonera
+	Los valores del texto que se pueden definir son:
+	(con el nombre se sabe a qué panel está relacionado)
+		letraActual
+		letraListas
+		letraListaActual
+		letraOpcionesListaActual
+		letraBotonera
+-->
+<colores>
+   <color name="Azul y oro" description="Definición de colores basados en la gama del azul al oro">
+            <!--<GradientStop Color="#002080" Offset="0.0" />
+            <GradientStop Color="#001560" Offset="0.45" />
+            <GradientStop Color="#001050" Offset="0.55" />
+            <GradientStop Color="#904000" Offset="0.70" />
+            <GradientStop Color="#c0a000" Offset="0.80" />
+            <GradientStop Color="Black" Offset="0.92" />-->     
+      <setting name="fondoVentana" serializeAs="String">
+         <value>sc#1; 0; 0.125; 0.5@0|sc#2; 0; 0.082; 0.3764@0.20|sc#3; 0; 0.062; 0.313@0.3|sc#4; 0.5647; 0.2509; 0@0.5|sc#5; 0.75294; 0.62764; 0@0.60|sc#6; 0; 0; 0@0.92|</value>
+      </setting>
+      <setting name="fondoActual" serializeAs="String">
+        <value>sc#1; 0; 0.125; 0.5@0|sc#2; 0; 0.082; 0.3764@0.25|sc#3; 0; 0.062; 0.313@0.35|sc#4; 0.5647; 0.2509; 0@0.50|sc#5; 0.75294; 0.62764; 0@0.80|sc#6; 0; 0; 0@0.92|</value>
+      </setting>
+      <setting name="fondoListas" serializeAs="String">
+        <value>sc#1; 0.35; 0.55; 0.8@0|sc#2; 0.7; 0.7; 0.8@1|</value>
+      </setting>
+      <setting name="fondoListaActual" serializeAs="String">
+        <value>sc#1; 0; 0.125; 0.5@0|sc#2; 0; 0.082; 0.3764@0.25|sc#3; 0; 0.062; 0.313@0.35|sc#4; 0.5647; 0.2509; 0@0.50|sc#5; 0.75294; 0.62764; 0@0.80|sc#6; 0; 0; 0@0.92|</value>
+      </setting>
+      <setting name="fondoOpcionesListaActual" serializeAs="String">
+        <value>sc#1; 0; 0.125; 0.5@0|sc#2; 0; 0.082; 0.3764@0.25|sc#3; 0; 0.062; 0.313@0.35|sc#4; 0.5647; 0.2509; 0@0.50|sc#5; 0.75294; 0.62764; 0@0.80|sc#6; 0; 0; 0@0.92|</value>
+      </setting>
+      <setting name="fondoBotonera" serializeAs="String">
+        <value>sc#1; 0; 0.125; 0.5@0|sc#2; 0; 0.082; 0.3764@0.25|sc#3; 0; 0.062; 0.313@0.35|sc#4; 0.5647; 0.2509; 0@0.50|sc#5; 0.75294; 0.62764; 0@0.80|sc#6; 0; 0; 0@0.92|</value>
+      </setting>
+      <setting name="letraActual" serializeAs="String">
+         <value>#FFFFFFFF</value>
+      </setting>
+      <setting name="letraListas" serializeAs="String">
+         <value>#FF000000</value>
+      </setting>
+      <setting name="letraListaActual" serializeAs="String">
+         <value>#FFFFFFFF</value>
+      </setting>
+      <setting name="letraOpcionesListaActual" serializeAs="String">
+         <value>#FFFFFFFF</value>
+      </setting>
+      <setting name="letraBotonera" serializeAs="String">
+         <value>#FFFFFFFF</value>
+      </setting>
+   </color>
+</colores>

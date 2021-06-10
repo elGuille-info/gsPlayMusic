@@ -1,0 +1,27 @@
+﻿<Application x:Class="Application"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    StartupUri="Window1.xaml"
+    ShutdownMode="OnMainWindowClose"
+    >
+    <Application.Resources>
+        <!-- Resources scoped at the Application level should be defined here. -->
+
+        <!-- Los estilos y recursos para todos los controles del tipo indicado -->
+        <Style TargetType="MenuItem">
+            <Setter Property="Height" Value="22"/>
+        </Style>
+        <Style TargetType="Label">
+            <Setter Property="VerticalAlignment" Value="Top"/>
+            <Setter Property="HorizontalAlignment" Value="Left"/>
+        </Style>
+
+
+        <!-- 
+            Color de fondo de la ventana principal 
+            a nivel de la aplicación porque se asigna
+            en las propiedades de la ventana principal
+        -->
+
+    </Application.Resources>
+</Application>
