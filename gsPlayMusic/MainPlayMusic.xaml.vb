@@ -461,7 +461,7 @@ Partial Public Class MainPlayMusic
         If My.Settings.MilisegundosMezcla = -1 Then
             ' Leer los datos del fichero INI
             ' para saber si se debe calcular el tiempo total...         (05/May/05)
-            'chkCalcularTiempoLista.IsChecked = mINI.IniGet(sFicIni, "General", "Calcular Tiempo Total", False)
+            chkCalcularTiempoLista.IsChecked = mINI.IniGet(sFicIni, "General", "Calcular Tiempo Total", False)
             Me.chkMezclar.IsChecked = mINI.IniGet(sFicIni, "General", "Mezclar canciones", True)
             milisegundosMezcla = mINI.IniGet(sFicIni, "General", "milisegundosMezcla", 500)
             ' De 100 a 3000 milisegundos
@@ -498,7 +498,7 @@ Partial Public Class MainPlayMusic
             My.Settings.Listas = listasUser
             My.Settings.Repeat = Me.chkRepeat.IsChecked.Value
             My.Settings.Shuffle = Me.chkShuffle.IsChecked.Value
-            'My.Settings.CalcularTiempo = chkCalcularTiempoLista.IsChecked.Value
+            My.Settings.CalcularTiempo = chkCalcularTiempoLista.IsChecked.Value
             My.Settings.MinimizarTaskBar = mnuOcultarMini.IsChecked
             My.Settings.MezclarCanciones = chkMezclar.IsChecked.Value
             My.Settings.MilisegundosMezcla = milisegundosMezcla
@@ -506,7 +506,7 @@ Partial Public Class MainPlayMusic
 
             My.Settings.silencioTotal = callado
         Else
-            'chkCalcularTiempoLista.IsChecked = My.Settings.CalcularTiempo
+            chkCalcularTiempoLista.IsChecked = My.Settings.CalcularTiempo
             chkMezclar.IsChecked = My.Settings.MezclarCanciones
             milisegundosMezcla = My.Settings.MilisegundosMezcla
             ' De 100 a 3000 milisegundos
@@ -902,11 +902,11 @@ Partial Public Class MainPlayMusic
         btnBorrarLista.IsEnabled = b
         ' Para no calcular el tiempo cuando está tocando
         ' pero tampoco cuando la lista esté vacia                   (07/Sep/07)
-        'If b Then
-        '    btnCalcularTiempo.IsEnabled = btnTocar.IsEnabled
-        'Else
-        '    btnCalcularTiempo.IsEnabled = False
-        'End If
+        If b Then
+            btnCalcularTiempo.IsEnabled = btnTocar.IsEnabled
+        Else
+            btnCalcularTiempo.IsEnabled = False
+        End If
 
         btnSubir.IsEnabled = b
         btnBajar.IsEnabled = b
@@ -1065,10 +1065,10 @@ Partial Public Class MainPlayMusic
                     Dim itf As New ItemFichero(oFile)
 
                     lvCanciones.Items.Add(itf)
-                    'If chkCalcularTiempoLista.IsChecked Then
-                    '    itf.Duración = cMediaPlayer.DuracionStr(oFile.FullName, t1)
-                    '    tot += t1
-                    'End If
+                    If chkCalcularTiempoLista.IsChecked Then
+                        itf.Duración = cMediaPlayer.DuracionStr(oFile.FullName, t1)
+                        tot += t1
+                    End If
                 End If
             Catch 'ex As Exception
             End Try
@@ -1108,10 +1108,10 @@ Partial Public Class MainPlayMusic
         End If
 
         ' Mostrar el número de ficheros
-        If False Then 'chkCalcularTiempoLista.IsChecked Then
-            'lblStatus.Content = String.Format(" Hay {0} ficheros, duración total: {1}.",
-            '                                  lvCanciones.Items.Count.ToString,
-            '                                  milisegundos2Display(tot))
+        If chkCalcularTiempoLista.IsChecked Then
+            lblStatus.Content = String.Format(" Hay {0} ficheros, duración total: {1}.",
+                                              lvCanciones.Items.Count.ToString,
+                                              milisegundos2Display(tot))
         Else
             lblStatus.Content = String.Format(" Hay {0} ficheros, duración total: (no calculada).",
                                               lvCanciones.Items.Count.ToString)
@@ -1506,7 +1506,7 @@ Partial Public Class MainPlayMusic
         ' Los otros valores de la configuración del usuario         (08/Mar/07)
         My.Settings.Repeat = chkRepeat.IsChecked.Value
         My.Settings.Shuffle = chkShuffle.IsChecked.Value
-        'My.Settings.CalcularTiempo = chkCalcularTiempoLista.IsChecked.Value
+        My.Settings.CalcularTiempo = chkCalcularTiempoLista.IsChecked.Value
         My.Settings.MinimizarTaskBar = mnuOcultarMini.IsChecked
         My.Settings.MezclarCanciones = chkMezclar.IsChecked.Value
         My.Settings.MilisegundosMezcla = Me.milisegundosMezcla
@@ -1518,7 +1518,7 @@ Partial Public Class MainPlayMusic
         mINI.IniWrite(sFicIni, "Lista", "Shuffle", chkShuffle.IsChecked)
 
         ' para saber si se debe calcular el tiempo total...         (05/May/05)
-        'mINI.IniWrite(sFicIni, "General", "Calcular Tiempo Total", chkCalcularTiempoLista.IsChecked)
+        mINI.IniWrite(sFicIni, "General", "Calcular Tiempo Total", chkCalcularTiempoLista.IsChecked)
         mINI.IniWrite(sFicIni, "General", "Minimizar en TaskBar", mnuOcultarMini.IsChecked)
 
         ' Para la mezcla de las canciones                           (21/Oct/06)
@@ -2247,7 +2247,7 @@ Partial Public Class MainPlayMusic
             ' Los otros valores de la configuración del usuario         (08/Mar/07)
             chkRepeat.IsChecked = My.Settings.Repeat
             chkShuffle.IsChecked = My.Settings.Shuffle
-            'chkCalcularTiempoLista.IsChecked = My.Settings.CalcularTiempo
+            chkCalcularTiempoLista.IsChecked = My.Settings.CalcularTiempo
             mnuOcultarMini.IsChecked = My.Settings.MinimizarTaskBar
             chkMezclar.IsChecked = My.Settings.MezclarCanciones
             Me.milisegundosMezcla = My.Settings.MilisegundosMezcla
@@ -2637,7 +2637,7 @@ Partial Public Class MainPlayMusic
         btnBorrarLista.IsEnabled = True
         btnAbrirLista.IsEnabled = True
         btnGuardarLista.IsEnabled = True
-        'btnCalcularTiempo.IsEnabled = btnBorrarLista.IsEnabled
+        btnCalcularTiempo.IsEnabled = btnBorrarLista.IsEnabled
         btnAñadirCanciones.IsEnabled = btnGuardarLista.IsEnabled
 
         cboListas.IsEnabled = True
@@ -2751,7 +2751,7 @@ Partial Public Class MainPlayMusic
                         btnBorrarLista.IsEnabled = True
                         btnAbrirLista.IsEnabled = True
                         btnGuardarLista.IsEnabled = True
-                        'btnCalcularTiempo.IsEnabled = btnBorrarLista.IsEnabled
+                        btnCalcularTiempo.IsEnabled = btnBorrarLista.IsEnabled
                         btnAñadirCanciones.IsEnabled = btnGuardarLista.IsEnabled
                     End If
                 End If
@@ -2834,7 +2834,7 @@ Partial Public Class MainPlayMusic
             ultimaCancion = lvCanciones.SelectedIndex
             mINI.IniWrite(sFicIni, "Lista", "Ultima cancion", ultimaCancion.ToString)
 
-            nCancionActual = ultimaCancion
+            nCancionActual = ultimaCancion ' lvCanciones.SelectedIndex
 
             ' guardar la que se va a tocar (el nombre)              (28/Feb/05)
             mINI.IniWrite(sFicIni, "General", "Tocando", ifi.Nombre)
@@ -3389,43 +3389,43 @@ Partial Public Class MainPlayMusic
         reiniciarLista()
     End Sub
 
-    'Private Sub btnCalcularTiempo_Click(ByVal sender As Object,
-    '                                    ByVal e As RoutedEventArgs) Handles btnCalcularTiempo.Click
-    '    ' Mostrar el tiempo total de la lista actual                (05/May/05)
-    '    Static yaEstoy As Boolean
-    '    If yaEstoy Then Exit Sub
+    Private Sub btnCalcularTiempo_Click(ByVal sender As Object,
+                                        ByVal e As RoutedEventArgs) Handles btnCalcularTiempo.Click
+        ' Mostrar el tiempo total de la lista actual                (05/May/05)
+        Static yaEstoy As Boolean
+        If yaEstoy Then Exit Sub
 
-    '    Dim s As String = btnCalcularTiempo.ToolTip.ToString
-    '    Dim img As Object = btnCalcularTiempo.Content
+        Dim s As String = btnCalcularTiempo.ToolTip.ToString
+        Dim img As Object = btnCalcularTiempo.Content
 
-    '    btnCalcularTiempo.Content = "..."
-    '    btnCalcularTiempo.ToolTip = "Calculando..."
-    '    lblStatus.Content = "Calculando el tiempo total..."
-    '    DoEvents()
+        btnCalcularTiempo.Content = "..."
+        btnCalcularTiempo.ToolTip = "Calculando..."
+        lblStatus.Content = "Calculando el tiempo total..."
+        DoEvents()
 
-    '    ' para los totales de tiempo
-    '    Dim t1, tot As Integer
-    '    '
-    '    For i As Integer = 0 To lvCanciones.Items.Count - 1
-    '        Dim ifi As ItemFichero = TryCast(lvCanciones.Items(i), ItemFichero)
-    '        ifi.Duración = cMediaPlayer.DuracionStr(ifi.FullName, t1)
-    '        tot += t1
-    '    Next
+        ' para los totales de tiempo
+        Dim t1, tot As Integer
+        '
+        For i As Integer = 0 To lvCanciones.Items.Count - 1
+            Dim ifi As ItemFichero = TryCast(lvCanciones.Items(i), ItemFichero)
+            ifi.Duración = cMediaPlayer.DuracionStr(ifi.FullName, t1)
+            tot += t1
+        Next
 
-    '    btnCalcularTiempo.Content = img
-    '    btnCalcularTiempo.ToolTip = s
+        btnCalcularTiempo.Content = img
+        btnCalcularTiempo.ToolTip = s
 
-    '    lvCanciones.Items.Refresh()
+        lvCanciones.Items.Refresh()
 
-    '    yaEstoy = False
+        yaEstoy = False
 
-    '    ' Mostrar el número de ficheros
-    '    lblStatus.Content = String.Format(" Hay {0} ficheros, duración total: {1}.",
-    '                                      lvCanciones.Items.Count.ToString, milisegundos2Display(tot))
+        ' Mostrar el número de ficheros
+        lblStatus.Content = String.Format(" Hay {0} ficheros, duración total: {1}.",
+                                          lvCanciones.Items.Count.ToString, milisegundos2Display(tot))
 
-    '    ' Actualizar la info de la lista actual         v2.0.0.0291 (24/Ago/07)
-    '    Me.labelListaActual.ToolTip = lblStatus.Content.ToString
-    'End Sub
+        ' Actualizar la info de la lista actual         v2.0.0.0291 (24/Ago/07)
+        Me.labelListaActual.ToolTip = lblStatus.Content.ToString
+    End Sub
 
     Private Sub btnAñadirCanciones_Click(ByVal sender As Object,
                                          ByVal e As RoutedEventArgs) _

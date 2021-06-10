@@ -4,7 +4,7 @@
 	xml:lang="es-ES"
 	x:Class="MainPlayMusic"
 	x:Name="Window"
-	Title="gsPlayMusic"
+	Title="gsPlayMusic para .NET 5.0 (net core)"
 	Width="670" Height="535.502">
     <!-- Icon="/gsPlayMusic;component/Resources/gsPlayMusic.png" -->
     <!-- Hay que ponerlo antes de otros valores de Window -->
@@ -310,8 +310,12 @@
                                                         </Button.ContextMenu>
                                                     </Button>
                                                     <Label/>
-                                            </StackPanel>
-                                            <Button Grid.Row="0" Grid.Column="2" Name="btnBorrarLista" Style="{StaticResource btnImage}" ToolTip=" Borrar el contenido de la lista " VerticalAlignment="Center">
+                                                    <Button Style="{StaticResource btnImage}" Name="btnCalcularTiempo" ToolTip=" Calcular el tiempo total de la lista actual " VerticalAlignment="Center" Margin="0,0,4,0">
+                                                    <Image Source="Resources/ExpirationHS.png"/>
+                                                    </Button>
+                                                </StackPanel>
+                                                <CheckBox Grid.Row="0" Grid.Column="1" Margin="4,0,0,0" Name="chkCalcularTiempoLista" Content="Calcular el tiempo total al cargar la lista" IsChecked="False" ToolTip=" Márcarlo para que calcule la duración de la lista al abrirla " VerticalAlignment="Center" Width="Auto" Foreground="{Binding Foreground, ElementName=expOpcionesLista}" />
+                                                <Button Grid.Row="0" Grid.Column="2" Name="btnBorrarLista" Style="{StaticResource btnImage}" ToolTip=" Borrar el contenido de la lista " VerticalAlignment="Center">
                                                 <Image Source="Resources/DocumentoBorrarRojo.png"/>
                                                 </Button>
                                             </Grid>
