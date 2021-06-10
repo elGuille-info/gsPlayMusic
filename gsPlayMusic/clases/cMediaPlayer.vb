@@ -193,7 +193,7 @@ Public Class cMediaPlayer
     ''' <returns>
     ''' Si tiene TimeSpan el contenido de wDuration.TimeSpan, si no, el valor convertido de wDuration.ToString()
     ''' </returns>
-    Private Shared Function ComprobarDuration(wDuration As Windows.Duration) As TimeSpan
+    Private Shared Function ComprobarDuration(wDuration As System.Windows.Duration) As TimeSpan
         Dim ts As New TimeSpan
         If wDuration.HasTimeSpan Then
             ts = wDuration.TimeSpan

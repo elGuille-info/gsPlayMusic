@@ -112,7 +112,7 @@ Partial Public Class wColoresCfg
         ' y asignarlo a los controles, etc.
 
         ' Posicionar la ventana al lado de la principal
-        With MainPlayMusic.VentanaPrincipal
+        With Window.VentanaPrincipal
             Me.Top = .Top
             ' Para restaurar la posición al cerrar                  (20/Ago/07)
             principalLeft = .Left
@@ -134,20 +134,20 @@ Partial Public Class wColoresCfg
         'fondos.Add(CType(Window1.VentanaPrincipal.expOpcionesLista.Background, LinearGradientBrush))
         'fondos.Add(CType(Window1.VentanaPrincipal.expBotonera.Background, LinearGradientBrush))
 
-        fondosCopia.Add(CType(MainPlayMusic.VentanaPrincipal.gridMain.Background.Clone, LinearGradientBrush))
-        fondosCopia.Add(CType(MainPlayMusic.VentanaPrincipal.expActual.Background.Clone, LinearGradientBrush))
-        fondosCopia.Add(CType(MainPlayMusic.VentanaPrincipal.expListas.Background.Clone, LinearGradientBrush))
-        fondosCopia.Add(CType(MainPlayMusic.VentanaPrincipal.expListaActual.Background.Clone, LinearGradientBrush))
-        fondosCopia.Add(CType(MainPlayMusic.VentanaPrincipal.expOpcionesLista.Background.Clone, LinearGradientBrush))
-        fondosCopia.Add(CType(MainPlayMusic.VentanaPrincipal.expBotonera.Background.Clone, LinearGradientBrush))
+        fondosCopia.Add(CType(Window.VentanaPrincipal.gridMain.Background.Clone, LinearGradientBrush))
+        fondosCopia.Add(CType(Window.VentanaPrincipal.expActual.Background.Clone, LinearGradientBrush))
+        fondosCopia.Add(CType(Window.VentanaPrincipal.expListas.Background.Clone, LinearGradientBrush))
+        fondosCopia.Add(CType(Window.VentanaPrincipal.expListaActual.Background.Clone, LinearGradientBrush))
+        fondosCopia.Add(CType(Window.VentanaPrincipal.expOpcionesLista.Background.Clone, LinearGradientBrush))
+        fondosCopia.Add(CType(Window.VentanaPrincipal.expBotonera.Background.Clone, LinearGradientBrush))
 
         'letraCopia.Add(Nothing)
         colorTextosCopia.Add(New SolidColorBrush(Colors.Black))
-        colorTextosCopia.Add(CType(MainPlayMusic.VentanaPrincipal.expActual.Foreground.Clone, SolidColorBrush))
-        colorTextosCopia.Add(CType(MainPlayMusic.VentanaPrincipal.expListas.Foreground.Clone, SolidColorBrush))
-        colorTextosCopia.Add(CType(MainPlayMusic.VentanaPrincipal.expListaActual.Foreground.Clone, SolidColorBrush))
-        colorTextosCopia.Add(CType(MainPlayMusic.VentanaPrincipal.expOpcionesLista.Foreground.Clone, SolidColorBrush))
-        colorTextosCopia.Add(CType(MainPlayMusic.VentanaPrincipal.expBotonera.Foreground.Clone, SolidColorBrush))
+        colorTextosCopia.Add(CType(Window.VentanaPrincipal.expActual.Foreground.Clone, SolidColorBrush))
+        colorTextosCopia.Add(CType(Window.VentanaPrincipal.expListas.Foreground.Clone, SolidColorBrush))
+        colorTextosCopia.Add(CType(Window.VentanaPrincipal.expListaActual.Foreground.Clone, SolidColorBrush))
+        colorTextosCopia.Add(CType(Window.VentanaPrincipal.expOpcionesLista.Foreground.Clone, SolidColorBrush))
+        colorTextosCopia.Add(CType(Window.VentanaPrincipal.expBotonera.Foreground.Clone, SolidColorBrush))
 
         etiquetas.Add(Me.lblPrincipal)
         etiquetas.Add(Me.lblActual)
@@ -188,7 +188,7 @@ Partial Public Class wColoresCfg
             Me.gridColores.Children.Add(slid)
             slFore.Add(slid)
             If r = 0 Then
-                slid.Visibility = Windows.Visibility.Hidden
+                slid.Visibility = System.Windows.Visibility.Hidden
             Else
                 AddHandler slid.ValueChanged, AddressOf sliderTexto_ValueChanged
             End If
@@ -234,7 +234,7 @@ Partial Public Class wColoresCfg
     Private Sub winCfg_Closing(ByVal sender As Object, _
                                ByVal e As CancelEventArgs) Handles Me.Closing
         ' Restaurar la posición de la ventana principal
-        MainPlayMusic.VentanaPrincipal.Left = principalLeft
+        Window.VentanaPrincipal.Left = principalLeft
     End Sub
 
     Private Sub winCfg_Loaded(ByVal sender As Object, _
@@ -247,18 +247,18 @@ Partial Public Class wColoresCfg
 
         ' Restaurar los colores
 
-        MainPlayMusic.VentanaPrincipal.gridMain.Background = fondosCopia(0).Clone
-        MainPlayMusic.VentanaPrincipal.expActual.Background = fondosCopia(1).Clone
-        MainPlayMusic.VentanaPrincipal.expListas.Background = fondosCopia(2).Clone
-        MainPlayMusic.VentanaPrincipal.expListaActual.Background = fondosCopia(3).Clone
-        MainPlayMusic.VentanaPrincipal.expOpcionesLista.Background = fondosCopia(4).Clone
-        MainPlayMusic.VentanaPrincipal.expBotonera.Background = fondosCopia(5).Clone
+        Window.VentanaPrincipal.gridMain.Background = fondosCopia(0).Clone
+        Window.VentanaPrincipal.expActual.Background = fondosCopia(1).Clone
+        Window.VentanaPrincipal.expListas.Background = fondosCopia(2).Clone
+        Window.VentanaPrincipal.expListaActual.Background = fondosCopia(3).Clone
+        Window.VentanaPrincipal.expOpcionesLista.Background = fondosCopia(4).Clone
+        Window.VentanaPrincipal.expBotonera.Background = fondosCopia(5).Clone
 
-        MainPlayMusic.VentanaPrincipal.expActual.Foreground = colorTextosCopia(1).Clone
-        MainPlayMusic.VentanaPrincipal.expListas.Foreground = colorTextosCopia(2).Clone
-        MainPlayMusic.VentanaPrincipal.expListaActual.Foreground = colorTextosCopia(3).Clone
-        MainPlayMusic.VentanaPrincipal.expOpcionesLista.Foreground = colorTextosCopia(4).Clone
-        MainPlayMusic.VentanaPrincipal.expBotonera.Foreground = colorTextosCopia(5).Clone
+        Window.VentanaPrincipal.expActual.Foreground = colorTextosCopia(1).Clone
+        Window.VentanaPrincipal.expListas.Foreground = colorTextosCopia(2).Clone
+        Window.VentanaPrincipal.expListaActual.Foreground = colorTextosCopia(3).Clone
+        Window.VentanaPrincipal.expOpcionesLista.Foreground = colorTextosCopia(4).Clone
+        Window.VentanaPrincipal.expBotonera.Foreground = colorTextosCopia(5).Clone
 
         Me.DialogResult = False
     End Sub
@@ -349,34 +349,34 @@ Partial Public Class wColoresCfg
         iniciando = True
 
         ' Restaurar los colores
-        MainPlayMusic.VentanaPrincipal.gridMain.Background = fondosCopia(0).Clone
-        MainPlayMusic.VentanaPrincipal.expActual.Background = fondosCopia(1).Clone
-        MainPlayMusic.VentanaPrincipal.expListas.Background = fondosCopia(2).Clone
-        MainPlayMusic.VentanaPrincipal.expListaActual.Background = fondosCopia(3).Clone
-        MainPlayMusic.VentanaPrincipal.expOpcionesLista.Background = fondosCopia(4).Clone
-        MainPlayMusic.VentanaPrincipal.expBotonera.Background = fondosCopia(5).Clone
+        Window.VentanaPrincipal.gridMain.Background = fondosCopia(0).Clone
+        Window.VentanaPrincipal.expActual.Background = fondosCopia(1).Clone
+        Window.VentanaPrincipal.expListas.Background = fondosCopia(2).Clone
+        Window.VentanaPrincipal.expListaActual.Background = fondosCopia(3).Clone
+        Window.VentanaPrincipal.expOpcionesLista.Background = fondosCopia(4).Clone
+        Window.VentanaPrincipal.expBotonera.Background = fondosCopia(5).Clone
 
-        MainPlayMusic.VentanaPrincipal.expActual.Foreground = colorTextosCopia(1).Clone
-        MainPlayMusic.VentanaPrincipal.expListas.Foreground = colorTextosCopia(2).Clone
-        MainPlayMusic.VentanaPrincipal.expListaActual.Foreground = colorTextosCopia(3).Clone
-        MainPlayMusic.VentanaPrincipal.expOpcionesLista.Foreground = colorTextosCopia(4).Clone
-        MainPlayMusic.VentanaPrincipal.expBotonera.Foreground = colorTextosCopia(5).Clone
+        Window.VentanaPrincipal.expActual.Foreground = colorTextosCopia(1).Clone
+        Window.VentanaPrincipal.expListas.Foreground = colorTextosCopia(2).Clone
+        Window.VentanaPrincipal.expListaActual.Foreground = colorTextosCopia(3).Clone
+        Window.VentanaPrincipal.expOpcionesLista.Foreground = colorTextosCopia(4).Clone
+        Window.VentanaPrincipal.expBotonera.Foreground = colorTextosCopia(5).Clone
 
         fondos.Clear()
-        fondos.Add(CType(MainPlayMusic.VentanaPrincipal.gridMain.Background, LinearGradientBrush))
-        fondos.Add(CType(MainPlayMusic.VentanaPrincipal.expActual.Background, LinearGradientBrush))
-        fondos.Add(CType(MainPlayMusic.VentanaPrincipal.expListas.Background, LinearGradientBrush))
-        fondos.Add(CType(MainPlayMusic.VentanaPrincipal.expListaActual.Background, LinearGradientBrush))
-        fondos.Add(CType(MainPlayMusic.VentanaPrincipal.expOpcionesLista.Background, LinearGradientBrush))
-        fondos.Add(CType(MainPlayMusic.VentanaPrincipal.expBotonera.Background, LinearGradientBrush))
+        fondos.Add(CType(Window.VentanaPrincipal.gridMain.Background, LinearGradientBrush))
+        fondos.Add(CType(Window.VentanaPrincipal.expActual.Background, LinearGradientBrush))
+        fondos.Add(CType(Window.VentanaPrincipal.expListas.Background, LinearGradientBrush))
+        fondos.Add(CType(Window.VentanaPrincipal.expListaActual.Background, LinearGradientBrush))
+        fondos.Add(CType(Window.VentanaPrincipal.expOpcionesLista.Background, LinearGradientBrush))
+        fondos.Add(CType(Window.VentanaPrincipal.expBotonera.Background, LinearGradientBrush))
 
         colorTextos.Clear()
         colorTextos.Add(New SolidColorBrush(Colors.Black))
-        colorTextos.Add(CType(MainPlayMusic.VentanaPrincipal.expActual.Foreground, SolidColorBrush))
-        colorTextos.Add(CType(MainPlayMusic.VentanaPrincipal.expListas.Foreground, SolidColorBrush))
-        colorTextos.Add(CType(MainPlayMusic.VentanaPrincipal.expListaActual.Foreground, SolidColorBrush))
-        colorTextos.Add(CType(MainPlayMusic.VentanaPrincipal.expOpcionesLista.Foreground, SolidColorBrush))
-        colorTextos.Add(CType(MainPlayMusic.VentanaPrincipal.expBotonera.Foreground, SolidColorBrush))
+        colorTextos.Add(CType(Window.VentanaPrincipal.expActual.Foreground, SolidColorBrush))
+        colorTextos.Add(CType(Window.VentanaPrincipal.expListas.Foreground, SolidColorBrush))
+        colorTextos.Add(CType(Window.VentanaPrincipal.expListaActual.Foreground, SolidColorBrush))
+        colorTextos.Add(CType(Window.VentanaPrincipal.expOpcionesLista.Foreground, SolidColorBrush))
+        colorTextos.Add(CType(Window.VentanaPrincipal.expBotonera.Foreground, SolidColorBrush))
 
         asignarValoresControles()
 
@@ -420,18 +420,18 @@ Partial Public Class wColoresCfg
     ''' </summary>
     ''' <remarks></remarks>
     Private Sub asignarColoresVentanaPrincipal()
-        MainPlayMusic.VentanaPrincipal.gridMain.Background = fondos(0) '.Clone
-        MainPlayMusic.VentanaPrincipal.expActual.Background = fondos(1) '.Clone
-        MainPlayMusic.VentanaPrincipal.expListas.Background = fondos(2) '.Clone
-        MainPlayMusic.VentanaPrincipal.expListaActual.Background = fondos(3) '.Clone
-        MainPlayMusic.VentanaPrincipal.expOpcionesLista.Background = fondos(4) '.Clone
-        MainPlayMusic.VentanaPrincipal.expBotonera.Background = fondos(5) '.Clone
+        Window.VentanaPrincipal.gridMain.Background = fondos(0) '.Clone
+        Window.VentanaPrincipal.expActual.Background = fondos(1) '.Clone
+        Window.VentanaPrincipal.expListas.Background = fondos(2) '.Clone
+        Window.VentanaPrincipal.expListaActual.Background = fondos(3) '.Clone
+        Window.VentanaPrincipal.expOpcionesLista.Background = fondos(4) '.Clone
+        Window.VentanaPrincipal.expBotonera.Background = fondos(5) '.Clone
 
-        MainPlayMusic.VentanaPrincipal.expActual.Foreground = colorTextos(1) '.Clone
-        MainPlayMusic.VentanaPrincipal.expListas.Foreground = colorTextos(2) '.Clone
-        MainPlayMusic.VentanaPrincipal.expListaActual.Foreground = colorTextos(3) '.Clone
-        MainPlayMusic.VentanaPrincipal.expOpcionesLista.Foreground = colorTextos(4) '.Clone
-        MainPlayMusic.VentanaPrincipal.expBotonera.Foreground = colorTextos(5) '.Clone
+        Window.VentanaPrincipal.expActual.Foreground = colorTextos(1) '.Clone
+        Window.VentanaPrincipal.expListas.Foreground = colorTextos(2) '.Clone
+        Window.VentanaPrincipal.expListaActual.Foreground = colorTextos(3) '.Clone
+        Window.VentanaPrincipal.expOpcionesLista.Foreground = colorTextos(4) '.Clone
+        Window.VentanaPrincipal.expBotonera.Foreground = colorTextos(5) '.Clone
 
     End Sub
 

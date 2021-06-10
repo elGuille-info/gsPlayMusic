@@ -71,9 +71,9 @@ Partial Public Class wInputBoxDialog
             ' Usar Collapse para que no se deje el espacio
             ' que ocupaba
             If value Then
-                Me.btnCancelar.Visibility = Windows.Visibility.Collapsed
+                Me.btnCancelar.Visibility = System.Windows.Visibility.Collapsed
             Else
-                Me.btnCancelar.Visibility = Windows.Visibility.Visible
+                Me.btnCancelar.Visibility = System.Windows.Visibility.Visible
             End If
             m_OcultarCancelar = value
         End Set

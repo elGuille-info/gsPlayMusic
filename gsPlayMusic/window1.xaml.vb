@@ -76,7 +76,7 @@ Imports System.Collections.Generic
 
 'Imports gsPlayWPF.elGuille.gsPlayLib
 
-Partial Public Class MainPlayMusic
+Partial Public Class Window
 
     ' Por si se indica desde la línea de comandos                   (18/Ago/07)
     ' empezar automáticamente a tocar
@@ -737,9 +737,9 @@ Partial Public Class MainPlayMusic
     ''' <value></value>
     ''' <returns></returns>
     ''' <remarks></remarks>
-    Public Shared ReadOnly Property VentanaPrincipal() As MainPlayMusic
+    Public Shared ReadOnly Property VentanaPrincipal() As Window
         Get
-            Return CType(Application.Current.MainWindow, MainPlayMusic)
+            Return CType(Application.Current.MainWindow, Window)
         End Get
     End Property
 
@@ -946,7 +946,7 @@ Partial Public Class MainPlayMusic
         If inicializando Then Exit Sub
 
         ' El al tamaño máximo de la lista, para que sea visible     (22/Ago/07)
-        If Me.WindowState <> Windows.WindowState.Minimized Then
+        If Me.WindowState <> System.Windows.WindowState.Minimized Then
             Me.lvCanciones.Height = Me.ActualHeight -
                                       (Me.expActual.ActualHeight + Me.expListas.ActualHeight +
                                        Me.expMenu.ActualHeight + Me.expOpcionesLista.ActualHeight +
@@ -2971,8 +2971,8 @@ Partial Public Class MainPlayMusic
         '    My.Settings.FormTop = CInt(Me.RestoreBounds.Top)
         'End If
 
-        If Me.WindowState <> Windows.WindowState.Normal _
-        OrElse Me.Visibility <> Windows.Visibility.Visible Then
+        If Me.WindowState <> System.Windows.WindowState.Normal _
+        OrElse Me.Visibility <> System.Windows.Visibility.Visible Then
             mINI.IniWrite(sFicIni, "General", "Form.Left", Me.RestoreBounds.Left.ToString)
             mINI.IniWrite(sFicIni, "General", "Form.Top", Me.RestoreBounds.Top.ToString)
             My.Settings.FormLeft = CInt(Me.RestoreBounds.Left)
@@ -3479,14 +3479,14 @@ Partial Public Class MainPlayMusic
                                   ByVal e As RoutedEventArgs) _
                                   Handles expMenu.Collapsed
         If inicializando Then Exit Sub
-        mnuPrincipal.Visibility = Windows.Visibility.Collapsed
+        mnuPrincipal.Visibility = System.Windows.Visibility.Collapsed
     End Sub
 
     Private Sub expMenu_Expanded(ByVal sender As Object,
                                  ByVal e As RoutedEventArgs) _
                                  Handles expMenu.Expanded
         If inicializando Then Exit Sub
-        mnuPrincipal.Visibility = Windows.Visibility.Visible
+        mnuPrincipal.Visibility = System.Windows.Visibility.Visible
     End Sub
 
     Private Sub mnuFichero_SubmenuOpened(ByVal sender As Object,
@@ -3568,8 +3568,8 @@ Partial Public Class MainPlayMusic
                 ItemFichero.CampoClasificar = ItemFichero.CamposClasificar.Tamaño
             Case mnuClasificarFullName.IsChecked
                 ItemFichero.CampoClasificar = ItemFichero.CamposClasificar.FullName
-            ' Hay que usar el mismo nombre de la cabecera del ListView
-            'nombreCab = "Nombre completo"
+                ' Hay que usar el mismo nombre de la cabecera del ListView
+                'nombreCab = "Nombre completo"
             Case Else
                 ItemFichero.CampoClasificar = ItemFichero.CamposClasificar.Nombre
         End Select
@@ -3583,10 +3583,10 @@ Partial Public Class MainPlayMusic
 
     End Sub
 
-    Private Sub mnuClasificar_Click(ByVal sender As Object, _
+    Private Sub mnuClasificar_Click(ByVal sender As Object,
                                     ByVal e As RoutedEventArgs) _
-                                    Handles mnuClasificarNombre.Click, mnuClasificarDirectorio.Click, _
-                                            mnuClasificarDuración.Click, mnuClasificarFecha.Click, _
+                                    Handles mnuClasificarNombre.Click, mnuClasificarDirectorio.Click,
+                                            mnuClasificarDuración.Click, mnuClasificarFecha.Click,
                                             mnuClasificarTamaño.Click, mnuClasificarFullName.Click
         If inicializando Then Exit Sub
 
@@ -3621,7 +3621,7 @@ Partial Public Class MainPlayMusic
         Me.btnClasificar.ToolTip = mnui.Header.ToString ' "Clasificar la lista por " & ItemFichero.CampoClasificar.ToString
     End Sub
 
-    Private Sub btnClasificar_ContextMenuOpening(ByVal sender As Object, _
+    Private Sub btnClasificar_ContextMenuOpening(ByVal sender As Object,
                                                  ByVal e As ContextMenuEventArgs) _
                                                  Handles btnClasificar.ContextMenuOpening
 
@@ -3638,8 +3638,8 @@ Partial Public Class MainPlayMusic
             sOrden = "(ascendente)"
         End If
 
-        Me.btnClasificar.ToolTip = "Clasificar la lista por " & _
-                                    ItemFichero.CampoClasificar.ToString & _
+        Me.btnClasificar.ToolTip = "Clasificar la lista por " &
+                                    ItemFichero.CampoClasificar.ToString &
                                     " " & sOrden
 
         With btnClasificar.ContextMenu
@@ -3688,7 +3688,7 @@ Partial Public Class MainPlayMusic
     ' que se muestre con el tamaño mínimo (por hacer)
     '
     ' En principio acomplarlo a los costados...
-    Private Sub mnuAcoplarIzquierda_Click(ByVal sender As Object, _
+    Private Sub mnuAcoplarIzquierda_Click(ByVal sender As Object,
                                           ByVal e As RoutedEventArgs) _
                                           Handles mnuAcoplarIzquierda.Click
         acoplandoVentana = True
@@ -3696,7 +3696,7 @@ Partial Public Class MainPlayMusic
         acoplandoVentana = False
     End Sub
 
-    Private Sub mnuAcoplarDerecha_Click(ByVal sender As Object, _
+    Private Sub mnuAcoplarDerecha_Click(ByVal sender As Object,
                                         ByVal e As RoutedEventArgs) _
                                         Handles mnuAcoplarDerecha.Click
         acoplandoVentana = True
@@ -3705,7 +3705,7 @@ Partial Public Class MainPlayMusic
         acoplandoVentana = False
     End Sub
 
-    Private Sub mnuAcoplarArriba_Click(ByVal sender As Object, _
+    Private Sub mnuAcoplarArriba_Click(ByVal sender As Object,
                                        ByVal e As RoutedEventArgs) _
                                        Handles mnuAcoplarArriba.Click
         acoplandoVentana = True
@@ -3714,7 +3714,7 @@ Partial Public Class MainPlayMusic
         acoplandoVentana = False
     End Sub
 
-    Private Sub mnuAcoplarAbajo_Click(ByVal sender As Object, _
+    Private Sub mnuAcoplarAbajo_Click(ByVal sender As Object,
                                       ByVal e As RoutedEventArgs) _
                                       Handles mnuAcoplarAbajo.Click
         acoplandoVentana = True
@@ -3723,7 +3723,7 @@ Partial Public Class MainPlayMusic
         acoplandoVentana = False
     End Sub
 
-    Private Sub mnuAcoplarNormal_Click(ByVal sender As Object, _
+    Private Sub mnuAcoplarNormal_Click(ByVal sender As Object,
                                        ByVal e As RoutedEventArgs) _
                                        Handles mnuAcoplarNormal.Click
         acoplandoVentana = True
@@ -3732,7 +3732,7 @@ Partial Public Class MainPlayMusic
         acoplandoVentana = False
     End Sub
 
-    Private Sub mnuAcoplarAbajoCen_Click(ByVal sender As Object, _
+    Private Sub mnuAcoplarAbajoCen_Click(ByVal sender As Object,
                                          ByVal e As RoutedEventArgs) _
                                          Handles mnuAcoplarAbajoCen.Click
         acoplandoVentana = True
@@ -3743,7 +3743,7 @@ Partial Public Class MainPlayMusic
         acoplandoVentana = False
     End Sub
 
-    Private Sub mnuAcoplarAbajoDer_Click(ByVal sender As Object, _
+    Private Sub mnuAcoplarAbajoDer_Click(ByVal sender As Object,
                                          ByVal e As RoutedEventArgs) _
                                          Handles mnuAcoplarAbajoDer.Click
         acoplandoVentana = True
@@ -3754,7 +3754,7 @@ Partial Public Class MainPlayMusic
         acoplandoVentana = False
     End Sub
 
-    Private Sub mnuAcoplarAbajoIzq_Click(ByVal sender As Object, _
+    Private Sub mnuAcoplarAbajoIzq_Click(ByVal sender As Object,
                                          ByVal e As RoutedEventArgs) _
                                          Handles mnuAcoplarAbajoIzq.Click
         acoplandoVentana = True
@@ -3764,7 +3764,7 @@ Partial Public Class MainPlayMusic
         acoplandoVentana = False
     End Sub
 
-    Private Sub mnuAcoplarArribaCen_Click(ByVal sender As Object, _
+    Private Sub mnuAcoplarArribaCen_Click(ByVal sender As Object,
                                           ByVal e As RoutedEventArgs) _
                                           Handles mnuAcoplarArribaCen.Click
         acoplandoVentana = True
@@ -3774,7 +3774,7 @@ Partial Public Class MainPlayMusic
         acoplandoVentana = False
     End Sub
 
-    Private Sub mnuAcoplarArribaDer_Click(ByVal sender As Object, _
+    Private Sub mnuAcoplarArribaDer_Click(ByVal sender As Object,
                                           ByVal e As RoutedEventArgs) _
                                           Handles mnuAcoplarArribaDer.Click
         acoplandoVentana = True
@@ -3784,7 +3784,7 @@ Partial Public Class MainPlayMusic
         acoplandoVentana = False
     End Sub
 
-    Private Sub mnuAcoplarArribaIzq_Click(ByVal sender As Object, _
+    Private Sub mnuAcoplarArribaIzq_Click(ByVal sender As Object,
                                           ByVal e As RoutedEventArgs) _
                                           Handles mnuAcoplarArribaIzq.Click
         acoplandoVentana = True
@@ -3793,7 +3793,7 @@ Partial Public Class MainPlayMusic
         acoplandoVentana = False
     End Sub
 
-    Private Sub mnuAcoplarCentro_Click(ByVal sender As Object, _
+    Private Sub mnuAcoplarCentro_Click(ByVal sender As Object,
                                        ByVal e As RoutedEventArgs) _
                                        Handles mnuAcoplarCentro.Click
         acoplandoVentana = True
@@ -3804,7 +3804,7 @@ Partial Public Class MainPlayMusic
         acoplandoVentana = False
     End Sub
 
-    Private Sub mnuConfigColores_Click(ByVal sender As Object, _
+    Private Sub mnuConfigColores_Click(ByVal sender As Object,
                                        ByVal e As RoutedEventArgs) _
                                        Handles mnuConfigColores.Click
 
@@ -3851,10 +3851,10 @@ Partial Public Class MainPlayMusic
         estaConfigurando = False
     End Sub
 
-    Private Sub expActual_SizeChanged(ByVal sender As Object, _
+    Private Sub expActual_SizeChanged(ByVal sender As Object,
                                       ByVal e As SizeChangedEventArgs) _
-                                      Handles expActual.SizeChanged, _
-                                              expListas.SizeChanged, _
+                                      Handles expActual.SizeChanged,
+                                              expListas.SizeChanged,
                                               expOpcionesLista.SizeChanged
         If inicializando Then Exit Sub
 
@@ -3882,7 +3882,7 @@ Partial Public Class MainPlayMusic
 
     End Sub
 
-    Private Sub timerAbrirLista_Elapsed(ByVal sender As Object, _
+    Private Sub timerAbrirLista_Elapsed(ByVal sender As Object,
                                         ByVal e As ElapsedEventArgs) _
                                         Handles timerAbrirLista.Elapsed
 

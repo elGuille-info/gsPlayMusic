@@ -320,7 +320,7 @@ Partial Public Class wConfig
                                    ByVal sortDir As ListSortDirection, _
                                    ByVal cabecera As GridViewColumnHeader)
 
-        MainPlayMusic.VentanaPrincipal.ClasificarLista(items, nombreCab, sortDir)
+        Window.VentanaPrincipal.ClasificarLista(items, nombreCab, sortDir)
 
         ' Actualizar el icono de la cabecera
         Dim nombreTemplate As String = ""
@@ -420,7 +420,7 @@ Partial Public Class wConfig
                                     Handles Me.SizeChanged
         If inicializando Then Exit Sub
 
-        If Me.WindowState <> Windows.WindowState.Minimized Then
+        If Me.WindowState <> System.Windows.WindowState.Minimized Then
             'Me.lvFicColores.Height = 0 ' Me.gridListas.RowDefinitions(0).ActualHeight '+ 40
             'Me.lvListas.Height = 0 'Me.gridListas.RowDefinitions(1).ActualHeight '+ 20
 
